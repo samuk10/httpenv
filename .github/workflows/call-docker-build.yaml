@@ -57,16 +57,6 @@ jobs:
       image-names: |
         samukarb/httpenv
         ghcr.io/samuk10/jobs:
-          call-docker-build:
-            # ... your existing settings ...
-            steps:
-              - name: Print Working Directory
-                run: pwd
-              - name: List Files
-                run: ls -al
-              - name: Call Docker Build
-                uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@main
-                # ...
 
       ### ? DONE
       ### set rules for tagging images, based on special action syntax:
@@ -87,7 +77,7 @@ jobs:
       # file: Dockerfile
 
       ### build stage to target, defaults to empty, which builds to last stage in Dockerfile
-      # target:
+      # target: dockerfilename
 
       ### platforms to build for
       ### defaults to linux/amd64
