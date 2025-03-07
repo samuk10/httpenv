@@ -56,7 +56,17 @@ jobs:
       #   ghcr.io/${{ github.repository }} # Seta dinamicamente
       image-names: |
         samukarb/httpenv
-        ghcr.io/samuk10/httpenv
+        ghcr.io/samuk10/jobs:
+          call-docker-build:
+            # ... your existing settings ...
+            steps:
+              - name: Print Working Directory
+                run: pwd
+              - name: List Files
+                run: ls -al
+              - name: Call Docker Build
+                uses: bretfisher/docker-build-workflow/.github/workflows/reusable-docker-build.yaml@main
+                # ...
 
       ### ? DONE
       ### set rules for tagging images, based on special action syntax:
@@ -71,10 +81,10 @@ jobs:
 
       ### path to where docker should copy files into image
       ### defaults to root of repository (.)
-      context: .
+      # context: .
 
       ### Dockerfile alternate name. Default is Dockerfile (relative to context path)
-      # file: Containerfile
+      file: Dockerfile
 
       ### build stage to target, defaults to empty, which builds to last stage in Dockerfile
       # target:
