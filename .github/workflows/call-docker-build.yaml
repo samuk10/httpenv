@@ -51,9 +51,12 @@ jobs:
       ### ? DONE
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
+      # image-names: |
+      #   ${{ github.repository }} # Seta dinamicamente
+      #   ghcr.io/${{ github.repository }} # Seta dinamicamente
       image-names: |
-        ${{ github.repository }}
-        ghcr.io/${{ github.repository }}
+        samukarb/httpenv
+        ghcr.io/samuk10/httpenv
 
       ### ? DONE
       ### set rules for tagging images, based on special action syntax:
